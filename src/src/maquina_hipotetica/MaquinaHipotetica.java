@@ -25,7 +25,14 @@ public class MaquinaHipotetica
 		return pos;
 	}
 	
-	//public 
+	public void promptInterativo()
+	{
+		int pi_estado = 0;
+		while(true)
+		{
+			
+		}
+	}
 	
 	public static void main(String[] args)
 	{
