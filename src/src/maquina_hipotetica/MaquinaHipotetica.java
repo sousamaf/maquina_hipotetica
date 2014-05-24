@@ -1,4 +1,4 @@
-﻿package maquina_hipotetica;
+﻿package maquinaHipotetica;
 
 import java.util.Scanner;
 
@@ -27,7 +27,7 @@ public class MaquinaHipotetica
 		return pos;
 	}
 	
-	public void promptInterativo()
+	public static void promptInterativo()
 	{
 		int pi_estado = 0;
 		
@@ -37,41 +37,42 @@ public class MaquinaHipotetica
 		// string para testar se a intrução é a instrução de parada
 		String testa = "";
 		
+		
+		System.out.println("digite a instrução");
 		while(true)
 		{
+			testa= entrada.next() ;
 			
-			// exibe as instruções que ja foram digitadas
-			System.out.println(exibe.toUpperCase());
-
-			System.out.print(">>> ");
-			testa = entrada.next() ;
 			exibe += testa + "\n";
-						
+			
+			
+			
 			
 			// testa se a instrução é @
-			if(testa.toUpperCase().substring(0, 1).equals("@"))
-			{
-				pi_estado = 3;
-					
-			}
-			// testa se a instrução é #
-			else if (testa.toUpperCase().substring(0,1).equals("#"))
-			{
-				pi_estado = 1;
+		if(testa.toUpperCase().substring(0, 1).equals("@")){
+			pi_estado = 3;
 				
 			}
-			else if (testa.toUpperCase().substring(0,1).equals(" "))
-			{
-
+		// testa se a instrução é #
+		else if (testa.toUpperCase().substring(0,1).equals("#"))
+		{
+			pi_estado = 1;
+			
+		}
+		else if (testa.toUpperCase().substring(0,1).equals(" "))
+				{
+			
+				}
 		
-			}
-				
-				
-			}
+		// exibe as instruções que ja foram digitadas
+					System.out.println(exibe.toUpperCase());
+			
+			
+		}
 	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println(getEndMemoria("56"));
+		promptInterativo();
 	}
 }
