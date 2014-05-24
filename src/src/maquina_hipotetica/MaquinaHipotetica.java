@@ -62,6 +62,7 @@ public class MaquinaHipotetica
 		}
 		else if (testa.toUpperCase().substring(0,1).equals(" "))
 				{
+
 			
 				}
 			
