@@ -9,7 +9,6 @@ public class MaquinaHipotetica
 	// o endereço da próxima instrução.
 	static String[] pc = new String[2];
 	
-	
 	//Registrador de instrução, retem a instrução
 	// atual, em execução.
 	String[] ri = new String[4];
@@ -19,7 +18,8 @@ public class MaquinaHipotetica
 	
 	// Banco de memória principal.
 	static String[][] mp = new String[256][2];
-	 // posição da memoria principal
+
+	// posição da memoria principal
 	static int mp_pos = 0;
 	
 	/*
@@ -127,6 +127,135 @@ public class MaquinaHipotetica
 			
 		}
 	}
+	
+	/*
+	 * 
+	 */
+	public void buscaInstrucao()
+	{
+		
+	}
+	
+	/*
+	 * 
+	 */
+	public void decodificaInstrucao()
+	{
+		
+	}
+	
+	/*
+	 * 
+	 */
+	public void intrucao_1(String registrador, String endereco)
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_2()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_3()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_4()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_5()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_6()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_7()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_8()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_9()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_A()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_B()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_C()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_D()
+	{
+		
+	}
+
+	/*
+	 * 
+	 */
+	public void intrucao_E()
+	{
+		
+	}
+
 	
 	/*
 	 * Método principal do pragrama.
