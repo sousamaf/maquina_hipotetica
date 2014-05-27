@@ -2,8 +2,6 @@
 
 import java.util.Scanner;
 
-
-
 public class MaquinaHipotetica 
 {
 
@@ -41,16 +39,13 @@ public class MaquinaHipotetica
 	}
 	
 	
-	public static void posiInicio()
-	{
-		
-		
-	}
-	
 	/*
 	 * Método para implementar o Prompt Interativo. 
 	 * Gerencia a entrda de dados para a memória da 
 	 * máquina hipotética.
+	 * 
+	 * @author	Jorge Lucas
+	 * @author	Gil Everton
 	 */
 	public static void promptInterativo()
 	{
@@ -61,7 +56,7 @@ public class MaquinaHipotetica
 		String exibe = "";
 		// string para testar se a intrução é a instrução de parada
 		String testa = "";
-		System.out.print(">>>");
+		System.out.print(">>> ");
 		while(true)
 		{
 			if(pi_estado == 3)
@@ -69,13 +64,14 @@ public class MaquinaHipotetica
 				break;
 			}
 		testa= entrada.next() ;
-		exibe += "\n" + testa;
+		exibe += "\n>>> " + testa;
 		// testa se a instrução é @
 		if(testa.toUpperCase().substring(0, 1).equals("@")){
 			pi_estado = 3;
 			pc[0] = String.valueOf( getEndMemoria(testa.substring(1,2)));
 			pc[1] = String.valueOf(getEndMemoria(testa.substring(2,3)));
-			System.out.println(pc[0]);
+			System.out.print('@');
+			System.out.print(pc[0]);
 			System.out.println(pc[1]);
 			break;
 		}
@@ -101,7 +97,7 @@ public class MaquinaHipotetica
 		
 		// exibe as instruções que ja foram digitadas
 		System.out.println(exibe.toUpperCase());
-		System.out.print(">>>");
+		System.out.print(">>> ");
 			
 		}
 		
@@ -110,6 +106,9 @@ public class MaquinaHipotetica
 	/*
 	 * Método para exibir o conteúdo presente na memória da máquina 
 	 * hipotética.
+	 * 
+	 * @author	Jorge Lucas
+	 * @author	Gil Everton
 	 */
 	public static void mostraMemoria()
 	{	
