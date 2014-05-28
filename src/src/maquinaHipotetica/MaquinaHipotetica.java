@@ -14,7 +14,7 @@ public class MaquinaHipotetica
 	static String[] ri = new String[4];
 	
 	// Banco de registradores.
-	String[][] reg = new String[16][2];
+	static String[][] reg = new String[16][2];
 	
 	// Banco de memória principal.
 	static String[][] mp = new String[256][2];
@@ -160,7 +160,7 @@ public class MaquinaHipotetica
 	 * 
 	 * @author Ricardo Santiago.
 	 */
-	public void decodificaInstrucao()
+	public static void decodificaInstrucao()
 	{
 		String endereco;
 		switch(ri[0])
@@ -224,7 +224,7 @@ public class MaquinaHipotetica
 	 * 
 	 * @autor Jorge Lucas
 	 */
-	public void intrucao_1(String registrador, String endereco)
+	public static void intrucao_1(String registrador, String endereco)
 	{
 		reg[getEndMemoria(registrador)][0] = mp[getEndMemoria(endereco)][0];
 		reg[getEndMemoria(registrador)][1] = mp[getEndMemoria(endereco)][1];
@@ -236,7 +236,7 @@ public class MaquinaHipotetica
 	 * Atribui o valor XY no registrador 
 	 * @author: Alexandra Carvalho
 	 */
-	public void intrucao_2(String registrador, String valor)
+	public static void intrucao_2(String registrador, String valor)
 	{
 		reg[getEndMemoria(registrador)][0] = mp[getEndMemoria(valor)][0];
 		reg[getEndMemoria(registrador)][1] = mp[getEndMemoria(valor)][1];
@@ -347,5 +347,6 @@ public class MaquinaHipotetica
 		promptInterativo();
 		mostraMemoria();
 		buscaInstrucao();
+		decodificaInstrucao();
 	}
 }
