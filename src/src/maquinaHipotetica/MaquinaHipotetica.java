@@ -145,7 +145,14 @@ public class MaquinaHipotetica
 		ri[0] = mp[iPos][0];
 		ri[1] = mp[iPos][1];
 		ri[2] = mp[iPos+1][0];
-		ri[3] = mp[iPos+1][1];		
+		ri[3] = mp[iPos+1][1];
+		
+		// Atualiza o contador de programa.
+		// @TODO: verifiar se é o local correto para esta atualização.
+		iPos += 2;
+		sPos = Integer.toHexString(iPos);
+		pc[0] = sPos.substring(0, 1);
+		pc[1] = sPos.substring(1, 2);
 	}
 	
 	/*
