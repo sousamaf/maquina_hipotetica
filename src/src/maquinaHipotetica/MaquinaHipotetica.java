@@ -123,6 +123,8 @@ public class MaquinaHipotetica
 			if(mp[i][0] != null)
 			{
 				end = Integer.toHexString(i);
+				if(i < 16)
+					System.out.print("0");
 				System.out.print(end.toUpperCase());
 				System.out.print(" | ");
 				System.out.print(mp[i][0]);
@@ -186,11 +188,16 @@ public class MaquinaHipotetica
 		iPos += 2;
 		sPos = Integer.toHexString(iPos);
 		
-		pc[0] = sPos.substring(0, 1);
 		if(sPos.length() > 1)
+		{
+			pc[0] = sPos.substring(0, 1);
 			pc[1] = sPos.substring(1, 2);
+		}
 		else
-			pc[1] = "0";
+		{
+			pc[0] = "0";
+			pc[1] = sPos.substring(0, 1);
+		}
 	}
 	
 	/*
@@ -204,8 +211,6 @@ public class MaquinaHipotetica
 		
 		switch(ri[0])
 		{
-		
-		
 			case "1":
 				endereco = ri[2] + ri[3];
 				instrucao_1(ri[1], endereco);
@@ -253,7 +258,8 @@ public class MaquinaHipotetica
 				instrucao_D(ri[3]);
 			break;
 			
-			case "E": // Metodo que não foi criado
+			case "E": 
+				instrucao_E(ri[3]);
 			break;
 			
 		}
@@ -406,7 +412,7 @@ public class MaquinaHipotetica
 	{
 		Scanner entrada = new Scanner(System.in);
 		String input = new String();
-		System.out.print(">>> ");
+		System.out.print("<<< ");
 		input = entrada.next();
 		
 		reg[getEndMemoria(registrador)][0] = input.substring(0, 1);
@@ -415,11 +421,19 @@ public class MaquinaHipotetica
 	}
 
 	/*
+	 * Método que implementa a instrução de saída de dados via tela.
+	 * Seu formato: E00X, onde:
+	 * E: seu OP.
+	 * 0: sem importância, símbolo usado para garantir o tamanho da instrução.
+	 * X: registrador que terá seu valor exibido em tela.
 	 * 
+	 * @author	Marco Sousa.
 	 */
-	public void instrucao_E()
+	public static void instrucao_E(String registrador)
 	{
-		
+		System.out.print("R" + registrador + ": ");
+		System.out.print(reg[getEndMemoria(registrador)][0]);
+		System.out.println(reg[getEndMemoria(registrador)][1]);
 	}
 
 	
