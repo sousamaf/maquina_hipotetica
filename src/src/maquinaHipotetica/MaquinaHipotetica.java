@@ -178,8 +178,11 @@ public class MaquinaHipotetica
 		// @TODO: verifiar se é o local correto para esta atualização.
 		iPos += 2;
 		sPos = Integer.toHexString(iPos);
+		
 		pc[0] = sPos.substring(0, 1);
 		pc[1] = sPos.substring(1, 2);
+		
+		System.out.println(sPos);
 	}
 	
 	/*
@@ -190,6 +193,8 @@ public class MaquinaHipotetica
 	public static void decodificaInstrucao()
 	{
 		String endereco;
+		
+		System.out.println("OP: " + ri[0]);
 		switch(ri[0])
 		{
 		
@@ -268,8 +273,8 @@ public class MaquinaHipotetica
 	 */
 	public static void intrucao_2(String registrador, String valor)
 	{
-		reg[getEndMemoria(registrador)][0] = mp[getEndMemoria(valor)][0];
-		reg[getEndMemoria(registrador)][1] = mp[getEndMemoria(valor)][1];
+		reg[getEndMemoria(registrador)][0] = valor.substring(0, 1);
+		reg[getEndMemoria(registrador)][1] = valor.substring(1, 2);
 	}
 
 	/*
@@ -282,6 +287,7 @@ public class MaquinaHipotetica
 	 */
 	public static void intrucao_3(String registrador, String endereco)
 	{
+//		System.out.println(getEndMemoria(registrador));
 		mp[getEndMemoria(endereco)][0] = reg[getEndMemoria(registrador)][0];
 		mp[getEndMemoria(endereco)][1] = reg[getEndMemoria(registrador)][1];		
 	}
