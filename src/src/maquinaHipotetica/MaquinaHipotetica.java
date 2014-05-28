@@ -307,10 +307,11 @@ public class MaquinaHipotetica
 		mp[getEndMemoria(endereco)][1] = reg[getEndMemoria(registrador)][1];		
 	}
 
-	/*Método da instrução "MOVE" (copia)
+	/*
+	 * Método da instrução "MOVE" (copia)
 	 * Copia o padrão de bits do registradorOrigem
 	 * para o registradorDestino
-	 *@author: Matheus Fernandes e Sostenes Oliveira
+	 * @author	Matheus Fernandes e Sostenes Oliveira
 	 */
 	public void instrucao_4(String registradorOrigem, String registradorDestino)
 	{
