@@ -11,7 +11,7 @@ public class MaquinaHipotetica
 	
 	//Registrador de instrução, retem a instrução
 	// atual, em execução.
-	String[] ri = new String[4];
+	static String[] ri = new String[4];
 	
 	// Banco de registradores.
 	String[][] reg = new String[16][2];
@@ -68,7 +68,7 @@ public class MaquinaHipotetica
 		// testa se a instrução é @
 		if(testa.toUpperCase().substring(0, 1).equals("@")){
 			pi_estado = 3;
-			pc[0] = String.valueOf( getEndMemoria(testa.substring(1,2)));
+			pc[0] = String.valueOf(getEndMemoria(testa.substring(1,2)));
 			pc[1] = String.valueOf(getEndMemoria(testa.substring(2,3)));
 			System.out.print('@');
 			System.out.print(pc[0]);
@@ -129,11 +129,23 @@ public class MaquinaHipotetica
 	}
 	
 	/*
+	 * Realiza a busca da próxima instrução na memória pricipal 
+	 * e a registra na variável 'ri', registrador de instrução.
 	 * 
+	 * @author	Marco Sousa.
 	 */
-	public void buscaInstrucao()
+	public static void buscaInstrucao()
 	{
+		String sPos = "";
+		int iPos = 0;
 		
+		sPos = pc[0] + pc[1];
+		iPos = getEndMemoria(sPos);
+		
+		ri[0] = mp[iPos][0];
+		ri[1] = mp[iPos][1];
+		ri[2] = mp[iPos+1][0];
+		ri[3] = mp[iPos+1][1];		
 	}
 	
 	/*
@@ -271,5 +283,6 @@ public class MaquinaHipotetica
 	{
 		promptInterativo();
 		mostraMemoria();
+		buscaInstrucao();
 	}
 }
