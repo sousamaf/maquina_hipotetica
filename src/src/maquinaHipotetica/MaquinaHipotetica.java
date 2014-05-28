@@ -153,7 +153,57 @@ public class MaquinaHipotetica
 	 */
 	public void decodificaInstrucao()
 	{
+		String endereco;
+		switch(ri[0])
+		{
 		
+		
+			case "1":endereco = ri[2] + ri[3];
+					intrucao_1(ri[1], endereco);
+			break;
+			
+			case "2": endereco = ri[2] + ri[3];
+					  intrucao_2(ri[2], endereco);
+			break;
+			
+			case "3": // Metodo que não foi criado
+			break;
+			
+			case "4": // Metodo que não foi criado
+			break;
+			
+			case "5": // Metodo que não foi criado
+			break;
+			
+			case "6": // Metodo que não foi criado
+			break;
+			
+			case "7": // Metodo que não foi criado
+			break;
+			
+			case "8": // Metodo que não foi criado
+			break;	
+			
+			case "9": // Metodo que não foi criado
+			break;
+					
+			case "A": // Metodo que não foi criado
+			break;
+			
+			case "B": // Metodo que não foi criado				
+			break;
+			
+			case "C": // Metodo que não foi criado
+			break;	
+			
+			case "D": // Metodo que não foi criado
+			break;
+			
+			case "E": // Metodo que não foi criado
+			break;
+			
+		}
+	
 	}
 	
 	/*
@@ -171,12 +221,14 @@ public class MaquinaHipotetica
 		
 	}
 
-	/*
-	 * 
+	/* Metodo da instrução 2 "LOAD"
+	 * Atribui o valor XY no registrador 
+	 * @author: Alexandra Carvalho
 	 */
-	public void intrucao_2()
+	public void intrucao_2(String registrador, String valor)
 	{
-		
+		reg[getEndMemoria(registrador)][0] = mp[getEndMemoria(valor)][0];
+		reg[getEndMemoria(registrador)][1] = mp[getEndMemoria(valor)][1];
 	}
 
 	/*
