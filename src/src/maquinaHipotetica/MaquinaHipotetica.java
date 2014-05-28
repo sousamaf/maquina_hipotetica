@@ -1,4 +1,4 @@
-﻿package maquinaHipotetica;
+﻿
 
 import java.util.Scanner;
 
@@ -294,11 +294,18 @@ public class MaquinaHipotetica
 		
 	}
 
-	/*
+	/* Metodo que realiza a soma do valor de dois registradores e salva a soma em um terceiro registrador.
+	 * @author Bruno Martinovski
 	 * 
 	 */
-	public void intrucao_5()
-	{
+	public void intrucao_5(String registrador1, String registrador2, String registrador3)
+	{ 
+		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0]) + Integer.parseInt(reg[getEndMemoria(registrador2)][1]);
+		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0]) + Integer.parseInt(reg[getEndMemoria(registrador3)][1]);
+		int total = valor1+valor2;
+		
+		String sTotal = Integer.toHexString(total);
+		reg[Integer.parseInt(registrador1)][0] = sTotal;
 		
 	}
 
