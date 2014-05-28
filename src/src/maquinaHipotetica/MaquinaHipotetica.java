@@ -156,7 +156,9 @@ public class MaquinaHipotetica
 	}
 	
 	/*
+	 * Método de decodificação e execução das instruções.
 	 * 
+	 * @author Ricardo Santiago.
 	 */
 	public void decodificaInstrucao()
 	{
@@ -165,12 +167,14 @@ public class MaquinaHipotetica
 		{
 		
 		
-			case "1":endereco = ri[2] + ri[3];
-					intrucao_1(ri[1], endereco);
+			case "1":
+				endereco = ri[2] + ri[3];
+				intrucao_1(ri[1], endereco);
 			break;
 			
-			case "2": endereco = ri[2] + ri[3];
-					  intrucao_2(ri[2], endereco);
+			case "2":
+				endereco = ri[2] + ri[3];
+				intrucao_2(ri[2], endereco);
 			break;
 			
 			case "3": // Metodo que não foi criado
