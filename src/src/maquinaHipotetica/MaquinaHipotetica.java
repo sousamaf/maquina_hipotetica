@@ -145,10 +145,17 @@ public class MaquinaHipotetica
 	}
 	
 	/*
+	 * instrução LOAD
+	 * busca em um endereço da memoria e atribui o conteudo deste endereço
+	 * em um registrador
 	 * 
+	 * @autor Jorge Lucas
 	 */
 	public void intrucao_1(String registrador, String endereco)
 	{
+		reg[getEndMemoria(registrador)][0] = mp[getEndMemoria(endereco)][0];
+		reg[getEndMemoria(registrador)][1] = mp[getEndMemoria(endereco)][1];
+		
 		
 	}
 
