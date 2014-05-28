@@ -21,6 +21,8 @@ public class MaquinaHipotetica
 
 	// posição da memoria principal
 	static int mp_pos = 0;
+
+	private static boolean parar = false;
 	
 	/*
 	 * Método para conversão de endereço de memória 
@@ -181,7 +183,10 @@ public class MaquinaHipotetica
 		sPos = Integer.toHexString(iPos);
 		
 		pc[0] = sPos.substring(0, 1);
-		pc[1] = sPos.substring(1, 2);
+		if(sPos.length() > 1)
+			pc[1] = sPos.substring(1, 2);
+		else
+			pc[1] = "0";
 		
 		System.out.println(sPos);
 	}
@@ -202,17 +207,17 @@ public class MaquinaHipotetica
 		
 			case "1":
 				endereco = ri[2] + ri[3];
-				intrucao_1(ri[1], endereco);
+				instrucao_1(ri[1], endereco);
 			break;
 			
 			case "2":
 				endereco = ri[2] + ri[3];
-				intrucao_2(ri[1], endereco);
+				instrucao_2(ri[1], endereco);
 			break;
 			
 			case "3":
 				endereco = ri[2] + ri[3];
-				intrucao_3(ri[1], endereco);				
+				instrucao_3(ri[1], endereco);				
 			break;
 			
 			case "4": // Metodo que não foi criado
@@ -239,10 +244,12 @@ public class MaquinaHipotetica
 			case "B": // Metodo que não foi criado				
 			break;
 			
-			case "C": // Metodo que não foi criado
+			case "C": 
+				instrucao_C(ri[1] + ri[2] + ri[3]);
 			break;	
 			
-			case "D": // Metodo que não foi criado
+			case "D": 
+				instrucao_D(ri[3]);
 			break;
 			
 			case "E": // Metodo que não foi criado
@@ -259,7 +266,7 @@ public class MaquinaHipotetica
 	 * 
 	 * @autor Jorge Lucas
 	 */
-	public static void intrucao_1(String registrador, String endereco)
+	public static void instrucao_1(String registrador, String endereco)
 	{
 		reg[getEndMemoria(registrador)][0] = mp[getEndMemoria(endereco)][0];
 		reg[getEndMemoria(registrador)][1] = mp[getEndMemoria(endereco)][1];
@@ -272,7 +279,7 @@ public class MaquinaHipotetica
 	 * Atribui o valor XY ao registrador 
 	 * @author Alexandra Carvalho
 	 */
-	public static void intrucao_2(String registrador, String valor)
+	public static void instrucao_2(String registrador, String valor)
 	{
 		reg[getEndMemoria(registrador)][0] = valor.substring(0, 1);
 		reg[getEndMemoria(registrador)][1] = valor.substring(1, 2);
@@ -286,7 +293,7 @@ public class MaquinaHipotetica
 	 * @author Alexandra Carvalho
 	 * @author Ricardo Santiago
 	 */
-	public static void intrucao_3(String registrador, String endereco)
+	public static void instrucao_3(String registrador, String endereco)
 	{
 //		System.out.println(getEndMemoria(registrador));
 		mp[getEndMemoria(endereco)][0] = reg[getEndMemoria(registrador)][0];
@@ -298,7 +305,7 @@ public class MaquinaHipotetica
 	 * para o registradorDestino
 	 *@author: Matheus Fernandes e Sostenes Oliveira
 	 */
-	public void intrucao_4(String registradorOrigem, String registradorDestino)
+	public void instrucao_4(String registradorOrigem, String registradorDestino)
 	{
 		reg[getEndMemoria(registradorDestino)][0] = reg[getEndMemoria(registradorDestino)][0];
 		reg[getEndMemoria(registradorDestino)][1] = reg[getEndMemoria(registradorDestino)][1];
@@ -308,7 +315,7 @@ public class MaquinaHipotetica
 	 * @author Bruno Martinovski
 	 * 
 	 */
-	public void intrucao_5(String registrador1, String registrador2, String registrador3)
+	public void instrucao_5(String registrador1, String registrador2, String registrador3)
 	{ 
 		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0]) + Integer.parseInt(reg[getEndMemoria(registrador2)][1]);
 		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0]) + Integer.parseInt(reg[getEndMemoria(registrador3)][1]);
@@ -322,7 +329,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_6()
+	public void instrucao_6()
 	{
 		
 	}
@@ -330,7 +337,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_7()
+	public void instrucao_7()
 	{
 		
 	}
@@ -338,7 +345,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_8()
+	public void instrucao_8()
 	{
 		
 	}
@@ -346,7 +353,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_9()
+	public void instrucao_9()
 	{
 		
 	}
@@ -354,7 +361,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_A()
+	public void instrucao_A()
 	{
 		
 	}
@@ -362,7 +369,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_B()
+	public void instrucao_B()
 	{
 		
 	}
@@ -370,9 +377,19 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_C()
-	{
-		
+	public static void instrucao_C(String complemento)
+	{ 
+		for (char value : complemento.toCharArray()) {
+			System.out.println(value);
+			if(value != '0')
+			{
+				parar = false;
+				break;
+			} else 
+			{
+				parar = true;
+			}
+		}
 	}
 
 	/*
@@ -384,10 +401,11 @@ public class MaquinaHipotetica
 	 * 
 	 * @author	Marco Sousa.
 	 */
-	public void intrucao_D(String registrador)
+	public static void instrucao_D(String registrador)
 	{
 		Scanner entrada = new Scanner(System.in);
 		String input = new String();
+		System.out.print(">>> ");
 		input = entrada.next();
 		
 		reg[getEndMemoria(registrador)][0] = input.substring(0, 1);
@@ -398,7 +416,7 @@ public class MaquinaHipotetica
 	/*
 	 * 
 	 */
-	public void intrucao_E()
+	public void instrucao_E()
 	{
 		
 	}
@@ -412,12 +430,13 @@ public class MaquinaHipotetica
 		promptInterativo();
 		mostraMemoria();
 		
-		buscaInstrucao();
-		decodificaInstrucao();
-		buscaInstrucao();
-		decodificaInstrucao();
-		buscaInstrucao();
-		decodificaInstrucao();
+		while(true)
+		{
+			buscaInstrucao();
+			decodificaInstrucao();
+			if(parar  == true)
+				break;
+		}
 		mostraRegistrador();
 		mostraMemoria();
 	}
