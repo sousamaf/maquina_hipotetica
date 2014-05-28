@@ -1,4 +1,4 @@
-﻿
+﻿package maquinaHipotetica;
 
 import java.util.Scanner;
 
@@ -140,7 +140,7 @@ public class MaquinaHipotetica
 		String end = "";
 		for(i = 0; i < 16; i++)
 		{
-			if(mp[i][0] != null)
+			if(reg[i][0] != null)
 			{
 				end = Integer.toHexString(i);
 				System.out.print(end.toUpperCase());
@@ -398,11 +398,14 @@ public class MaquinaHipotetica
 	{
 		promptInterativo();
 		mostraMemoria();
+		
+		buscaInstrucao();
+		decodificaInstrucao();
+		buscaInstrucao();
+		decodificaInstrucao();
+		buscaInstrucao();
+		decodificaInstrucao();
 		mostraRegistrador();
-		buscaInstrucao();
-		decodificaInstrucao();
-		buscaInstrucao();
-		decodificaInstrucao();
 		mostraMemoria();
 	}
 }
