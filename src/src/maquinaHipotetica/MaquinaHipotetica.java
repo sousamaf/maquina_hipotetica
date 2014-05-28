@@ -63,41 +63,42 @@ public class MaquinaHipotetica
 			{
 				break;
 			}
-		testa= entrada.next() ;
-		exibe += "\n>>> " + testa;
-		// testa se a instrução é @
-		if(testa.toUpperCase().substring(0, 1).equals("@")){
-			pi_estado = 3;
-			pc[0] = String.valueOf(getEndMemoria(testa.substring(1,2)));
-			pc[1] = String.valueOf(getEndMemoria(testa.substring(2,3)));
-			System.out.print('@');
-			System.out.print(pc[0]);
-			System.out.println(pc[1]);
-			break;
-		}
-		// testa se a instrução é #
-		else if (testa.toUpperCase().substring(0,1).equals("#"))
-		{
-			pi_estado = 1;
+			testa = entrada.next() ;
+			exibe += "\n>>> " + testa;
+			// testa se a instrução é @
+			if(testa.toUpperCase().substring(0, 1).equals("@"))
+			{
+				pi_estado = 3;
+				pc[0] = String.valueOf(getEndMemoria(testa.substring(1,2)));
+				pc[1] = String.valueOf(getEndMemoria(testa.substring(2,3)));
+				System.out.print('@');
+				System.out.print(pc[0]);
+				System.out.println(pc[1]);
+				break;
+			}
+			// testa se a instrução é #
+			else if (testa.toUpperCase().substring(0,1).equals("#"))
+			{
+				pi_estado = 1;
+				
+				
+				mp_pos = getEndMemoria(testa.substring(1,3));
+				pi_estado = 0;
+				
+			}
+			else
+			{
+				mp[mp_pos][0] = testa.substring(0,1);
+				mp[mp_pos][1] = testa.substring(1,2);
+				mp_pos++;
+				mp[mp_pos][0] = testa.substring(2,3);
+				mp[mp_pos][1] = testa.substring(3,4);
+				mp_pos++;
+			}
 			
-			
-			mp_pos = getEndMemoria(testa.substring(1,3));
-			pi_estado = 0;
-			
-		}
-		else
-		{
-			mp[mp_pos][0] = testa.substring(0,1);
-			mp[mp_pos][1] = testa.substring(1,2);
-			mp_pos++;
-			mp[mp_pos][0] = testa.substring(2,3);
-			mp[mp_pos][1] = testa.substring(3,4);
-			mp_pos++;
-		}
-		
-		// exibe as instruções que ja foram digitadas
-		System.out.println(exibe.toUpperCase());
-		System.out.print(">>> ");
+			// exibe as instruções que ja foram digitadas
+			System.out.println(exibe.toUpperCase());
+			System.out.print(">>> ");
 			
 		}
 		
@@ -375,10 +376,22 @@ public class MaquinaHipotetica
 	}
 
 	/*
+	 * Método que implementa a instrução de entrada de dados via teclado.
+	 * Seu formato: D00X, onde:
+	 * D: seu OP.
+	 * 0: sem importância, símbolo usado para garantir o tamnho da instrução.
+	 * X: registrador que receberá o valor informado pelo usuário.
 	 * 
+	 * @author	Marco Sousa.
 	 */
-	public void intrucao_D()
+	public void intrucao_D(String registrador)
 	{
+		Scanner entrada = new Scanner(System.in);
+		String input = new String();
+		input = entrada.next();
+		
+		reg[getEndMemoria(registrador)][0] = input.substring(0, 1);
+		reg[getEndMemoria(registrador)][1] = input.substring(1, 2);
 		
 	}
 
