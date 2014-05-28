@@ -117,6 +117,7 @@ public class MaquinaHipotetica
 	{	
 		int i = 0;
 		String end = "";
+		System.out.println("Banco de memória principal.");
 		for(i = 0; i < 256; i++)
 		{
 			if(mp[i][0] != null)
@@ -141,6 +142,9 @@ public class MaquinaHipotetica
 	{	
 		int i = 0;
 		String end = "";
+		
+		System.out.println("Banco de registradores.");
+		
 		for(i = 0; i < 16; i++)
 		{
 			if(reg[i][0] != null)
@@ -187,8 +191,6 @@ public class MaquinaHipotetica
 			pc[1] = sPos.substring(1, 2);
 		else
 			pc[1] = "0";
-		
-		System.out.println(sPos);
 	}
 	
 	/*
@@ -200,7 +202,6 @@ public class MaquinaHipotetica
 	{
 		String endereco;
 		
-		System.out.println("OP: " + ri[0]);
 		switch(ri[0])
 		{
 		
@@ -379,8 +380,8 @@ public class MaquinaHipotetica
 	 */
 	public static void instrucao_C(String complemento)
 	{ 
-		for (char value : complemento.toCharArray()) {
-			System.out.println(value);
+		for (char value : complemento.toCharArray())
+		{
 			if(value != '0')
 			{
 				parar = false;
