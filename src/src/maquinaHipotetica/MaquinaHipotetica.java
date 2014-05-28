@@ -174,10 +174,12 @@ public class MaquinaHipotetica
 			
 			case "2":
 				endereco = ri[2] + ri[3];
-				intrucao_2(ri[2], endereco);
+				intrucao_2(ri[1], endereco);
 			break;
 			
-			case "3": // Metodo que não foi criado
+			case "3":
+				endereco = ri[2] + ri[3];
+				intrucao_3(ri[1], endereco);				
 			break;
 			
 			case "4": // Metodo que não foi criado
@@ -218,7 +220,7 @@ public class MaquinaHipotetica
 	}
 	
 	/*
-	 * instrução LOAD
+	 * Método da instrução LOAD
 	 * busca em um endereço da memoria e atribui o conteudo deste endereço
 	 * em um registrador
 	 * 
@@ -232,9 +234,10 @@ public class MaquinaHipotetica
 		
 	}
 
-	/* Metodo da instrução 2 "LOAD"
-	 * Atribui o valor XY no registrador 
-	 * @author: Alexandra Carvalho
+	/* 
+	 * Metodo da instrução 2 "LOAD"
+	 * Atribui o valor XY ao registrador 
+	 * @author Alexandra Carvalho
 	 */
 	public static void intrucao_2(String registrador, String valor)
 	{
@@ -243,11 +246,17 @@ public class MaquinaHipotetica
 	}
 
 	/*
+	 * Implementação da instrução 3, STORE.
+	 * Armazena o conteúdo de um registrador informado em um endereço
+	 * de memória principal.
 	 * 
+	 * @author Alexandra Carvalho
+	 * @author Ricardo Santiago
 	 */
-	public void intrucao_3()
+	public static void intrucao_3(String registrador, String endereco)
 	{
-		
+		mp[getEndMemoria(endereco)][0] = reg[getEndMemoria(registrador)][0];
+		mp[getEndMemoria(endereco)][1] = reg[getEndMemoria(registrador)][1];		
 	}
 
 	/*
@@ -348,5 +357,8 @@ public class MaquinaHipotetica
 		mostraMemoria();
 		buscaInstrucao();
 		decodificaInstrucao();
+		buscaInstrucao();
+		decodificaInstrucao();
+		mostraMemoria();
 	}
 }
