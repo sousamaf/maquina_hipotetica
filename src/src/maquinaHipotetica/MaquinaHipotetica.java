@@ -129,6 +129,33 @@ public class MaquinaHipotetica
 	}
 	
 	/*
+	 * Método para exibir o conteúdo presente no registrador da máquina 
+	 * hipotética.
+	 * 
+	 * @author	Rafael Carlos
+	 */
+	public static void mostraRegistrador()
+	{	
+		int i = 0;
+		String end = "";
+		for(i = 0; i < 16; i++)
+		{
+			if(mp[i][0] != null)
+			{
+				end = Integer.toHexString(i);
+				System.out.print(end.toUpperCase());
+				System.out.print(" | ");
+				System.out.print(reg[i][0]);
+				System.out.println(reg[i][1]);
+			}
+			
+		}
+	}
+	
+	
+	
+	
+	/*
 	 * Realiza a busca da próxima instrução na memória pricipal 
 	 * e a registra na variável 'ri', registrador de instrução.
 	 * 
@@ -355,6 +382,7 @@ public class MaquinaHipotetica
 	{
 		promptInterativo();
 		mostraMemoria();
+		mostraRegistrador();
 		buscaInstrucao();
 		decodificaInstrucao();
 		buscaInstrucao();
