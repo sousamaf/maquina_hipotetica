@@ -344,12 +344,27 @@ public class MaquinaHipotetica
 		}
 	}
 
-	/*
-	 * 
+	/* Método da intrução "ADD" (soma).
+	 * Recebe como parametro os dois registradores que serão somados,
+	 * logo em seguida armazena o resultado da operação em um terceiro registrador, chamado
+	 * registradorFinal.
+	 * @author Matheus Fernandes 
+	 * @author Sostenes Oliveira
 	 */
-	public void instrucao_6()
+	public void instrucao_6(String registrador1, String registrador2, String registradorFinal)
 	{
+		double reg1 = Integer.valueOf(reg[getEndMemoria(registrador1)][0]);
+		reg1 += Integer.valueOf(reg[getEndMemoria(registrador1)][1]);	
+	
+		double reg2 = Integer.valueOf(reg[getEndMemoria(registrador2)][0]);
+		reg2 += Integer.valueOf(reg[getEndMemoria(registrador2)][1]);
 		
+		int regFinal1 = (int) (reg1 + reg2);
+		
+		String regFinal2 = Integer.toHexString(regFinal1);;
+		
+		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
+		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2))); 	
 	}
 
 	/*
@@ -384,14 +399,21 @@ public class MaquinaHipotetica
 		
 	}
 
-	/*
-	 * 
+	/* Método da instrução JUMP
+	 * É feita a comparação entre o registrador passado como parâmetro, e
+	 * o registrador 0. Se a condição for satisfeita, o contador de programa
+	 * recebe o novo endereço da próxima instrução.
+	 * @author: Matheus Fernandes.
 	 */
-	public void instrucao_B()
-	{
-		
+	public void intrucao_B(String registrador, String endereco)
+	{		
+		if(reg[0][0].equals(reg[getEndMemoria(registrador)][0]) && reg[0][1].equals(reg[getEndMemoria(registrador)][1]))
+		{
+			pc[0] = String.valueOf(getEndMemoria(endereco.substring(0,1)));
+			pc[1] = String.valueOf(getEndMemoria(endereco.substring(1,2)));
+		}
 	}
-
+	
 	/*
 	 * 
 	 */
