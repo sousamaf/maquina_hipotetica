@@ -229,7 +229,8 @@ public class MaquinaHipotetica
 			case "4": // Metodo que não foi criado
 			break;
 			
-			case "5": // Metodo que não foi criado
+			case "5":
+				instrucao_5(ri[1], ri[2], ri[3]);
 			break;
 			
 			case "6": // Metodo que não foi criado
@@ -323,15 +324,24 @@ public class MaquinaHipotetica
 	 * @author Bruno Martinovski
 	 * 
 	 */
-	public void instrucao_5(String registrador1, String registrador2, String registrador3)
+	public static void instrucao_5(String registrador1, String registrador2, String registrador3)
 	{ 
-		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0]) + Integer.parseInt(reg[getEndMemoria(registrador2)][1]);
-		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0]) + Integer.parseInt(reg[getEndMemoria(registrador3)][1]);
-		int total = valor1+valor2;
-		
+		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1]);
+		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0] + reg[getEndMemoria(registrador3)][1]);
+		int total = valor1 + valor2;
+
 		String sTotal = Integer.toHexString(total);
-		reg[Integer.parseInt(registrador1)][0] = sTotal;
-		
+
+		if(sTotal.length() > 1)
+		{
+			reg[getEndMemoria(registrador1)][0] = sTotal.substring(0, 1);
+			reg[getEndMemoria(registrador1)][1] = sTotal.substring(1, 2);
+		}
+		else
+		{
+			reg[getEndMemoria(registrador1)][0] = "0";
+			reg[getEndMemoria(registrador1)][1] = sTotal.substring(0, 1);
+		}
 	}
 
 	/*
