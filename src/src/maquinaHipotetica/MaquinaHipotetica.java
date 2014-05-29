@@ -71,8 +71,8 @@ public class MaquinaHipotetica
 			if(testa.toUpperCase().substring(0, 1).equals("@"))
 			{
 				pi_estado = 3;
-				pc[0] = String.valueOf(getEndMemoria(testa.substring(1,2)));
-				pc[1] = String.valueOf(getEndMemoria(testa.substring(2,3)));
+				pc[0] = String.valueOf(testa.substring(1,2));
+				pc[1] = String.valueOf(testa.substring(2,3));
 				System.out.print('@');
 				System.out.print(pc[0]);
 				System.out.println(pc[1]);
@@ -248,7 +248,9 @@ public class MaquinaHipotetica
 			case "A": // Metodo que não foi criado
 			break;
 			
-			case "B": // Metodo que não foi criado				
+			case "B":
+				endereco = ri[2] + ri[3];
+				instrucao_B(ri[1], endereco);
 			break;
 			
 			case "C": 
@@ -361,7 +363,7 @@ public class MaquinaHipotetica
 		
 		int regFinal1 = (int) (reg1 + reg2);
 		
-		String regFinal2 = Integer.toHexString(regFinal1);;
+		String regFinal2 = Integer.toHexString(regFinal1);
 		
 		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
 		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2))); 	
@@ -405,12 +407,12 @@ public class MaquinaHipotetica
 	 * recebe o novo endereço da próxima instrução.
 	 * @author: Matheus Fernandes.
 	 */
-	public void intrucao_B(String registrador, String endereco)
+	public static void instrucao_B(String registrador, String endereco)
 	{		
 		if(reg[0][0].equals(reg[getEndMemoria(registrador)][0]) && reg[0][1].equals(reg[getEndMemoria(registrador)][1]))
 		{
-			pc[0] = String.valueOf(getEndMemoria(endereco.substring(0,1)));
-			pc[1] = String.valueOf(getEndMemoria(endereco.substring(1,2)));
+			pc[0] = String.valueOf(endereco.substring(0,1));
+			pc[1] = String.valueOf(endereco.substring(1,2));
 		}
 	}
 	
@@ -481,6 +483,7 @@ public class MaquinaHipotetica
 		while(true)
 		{
 			buscaInstrucao();
+			System.out.println("Executando: " + ri[0] + ri[1] + ri[2] + ri[3]);
 			decodificaInstrucao();
 			if(parar  == true)
 				break;
