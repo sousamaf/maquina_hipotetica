@@ -127,8 +127,8 @@ public class MaquinaHipotetica
 					System.out.print("0");
 				System.out.print(end.toUpperCase());
 				System.out.print(" | ");
-				System.out.print(mp[i][0]);
-				System.out.println(mp[i][1]);
+				System.out.print(mp[i][0].toUpperCase());
+				System.out.println(mp[i][1].toUpperCase());
 			}
 			
 		}
@@ -154,8 +154,8 @@ public class MaquinaHipotetica
 				end = Integer.toHexString(i);
 				System.out.print(end.toUpperCase());
 				System.out.print(" | ");
-				System.out.print(reg[i][0]);
-				System.out.println(reg[i][1]);
+				System.out.print(reg[i][0].toUpperCase());
+				System.out.println(reg[i][1].toUpperCase());
 			}
 			
 		}
@@ -326,8 +326,8 @@ public class MaquinaHipotetica
 	 */
 	public static void instrucao_5(String registrador1, String registrador2, String registrador3)
 	{ 
-		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1]);
-		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0] + reg[getEndMemoria(registrador3)][1]);
+		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1], 16);
+		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0] + reg[getEndMemoria(registrador3)][1], 16);
 		int total = valor1 + valor2;
 
 		String sTotal = Integer.toHexString(total);
