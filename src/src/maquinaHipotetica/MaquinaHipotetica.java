@@ -353,13 +353,18 @@ public class MaquinaHipotetica
 	 * @author Matheus Fernandes 
 	 * @author Sostenes Oliveira
 	 */
-	public void instrucao_6(String registrador1, String registrador2, String registradorFinal)
-	{
-		double reg1 = Integer.valueOf(reg[getEndMemoria(registrador1)][0]);
-		reg1 += Integer.valueOf(reg[getEndMemoria(registrador1)][1]);	
 	
-		double reg2 = Integer.valueOf(reg[getEndMemoria(registrador2)][0]);
-		reg2 += Integer.valueOf(reg[getEndMemoria(registrador2)][1]);
+	/* Método da intrução "ADD" (soma).
+	 * Recebe como parametro os dois registradores que serão somados,
+	 * logo em seguida armazena o resultado da operação em um terceiro registrador, chamado
+	 * registradorFinal.
+	 * @author Matheus Fernandes 
+	 * @author Sostenes Oliveira
+	 */
+	public static void instrucao_6(String registrador1, String registrador2, String registradorFinal)
+	{
+		double reg1 = Integer.valueOf(reg[getEndMemoria(registrador1)][0] + reg[getEndMemoria(registrador1)][1], 16);
+		double reg2 = Integer.valueOf(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1], 16);
 		
 		int regFinal1 = (int) (reg1 + reg2);
 		
@@ -369,27 +374,75 @@ public class MaquinaHipotetica
 		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2))); 	
 	}
 
-	/*
-	 * 
+	/*Método da intrução "OR" (operação lógica "OU").
+	 * Recebe como parametro os dois registradores que serão comparados bit a bit,
+	 * logo em seguida armazena o resultado da comparação em um terceiro registrador, chamado
+	 * registradorFinal.
+	 * @author Matheus Fernandes 
+	 * @author Eryck Kaique
+	 * @author Sostenes Oliveira
 	 */
-	public void instrucao_7()
-	{
+	public static void instrucao_7(String registrador1, String registrador2, String registradorFinal)
+	{	int reg1 = Integer.parseInt(registrador1);
+		Integer.toBinaryString(reg1);
 		
+		int reg2 = Integer.parseInt(registrador2);
+		Integer.toBinaryString(reg2);
+		
+		int regFinal = reg1 | reg2;
+		
+		String regFinal2 = Integer.toHexString(regFinal);
+		
+		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
+		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
 	}
 
-	/*
-	 * 
+	/*Método da intrução "AND" (operação lógica "E").
+	 * Recebe como parametro os dois registradores que serão comparados bit a bit,
+	 * logo em seguida armazena o resultado da comparação em um terceiro registrador, chamado
+	 * registradorFinal.
+	 * @author Matheus Fernandes 
+	 * @author Eryck Kaique
+	 * @author Sostenes Oliveira
 	 */
-	public void instrucao_8()
+	public static void instrucao_8(String registrador1, String registrador2, String registradorFinal)
 	{
-		
+		int reg1 = Integer.parseInt(registrador1);
+		Integer.toBinaryString(reg1);
+	
+		int reg2 = Integer.parseInt(registrador2);
+		Integer.toBinaryString(reg2);
+	
+		int regFinal = reg1 & reg2;
+		String regFinal2 = Integer.toHexString(regFinal);
+	
+		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
+		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
+	
 	}
+	
 
-	/*
-	 * 
+	/*Método da intrução "OR EXCLUSIVE" (operação lógica "OU EXCLUSIVO").
+	 * Recebe como parametro os dois registradores que serão comparados bit a bit,
+	 * logo em seguida armazena o resultado da comparação em um terceiro registrador, chamado
+	 * registradorFinal.
+	 * @author Matheus Fernandes 
+	 * @author Eryck Kaique
+	 * @author Sostenes Oliveira
 	 */
-	public void instrucao_9()
+	public static void instrucao_9(String registrador1, String registrador2, String registradorFinal)
 	{
+		int reg1 = Integer.parseInt(registrador1);
+		Integer.toBinaryString(reg1);
+	
+		int reg2 = Integer.parseInt(registrador2);
+		Integer.toBinaryString(reg2);
+	
+		int regFinal = reg1 ^ reg2;
+		String regFinal2 = Integer.toHexString(regFinal);
+	
+		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
+		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
 		
 	}
 
