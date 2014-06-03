@@ -318,7 +318,7 @@ public class MaquinaHipotetica
 	 */
 	public static void instrucao_4(String registradorOrigem, String registradorDestino)
 	{
-		reg[getEndMemoria(registradorDestino)][0] = reg[getEndMemoria(registradororigem)][0];
+		reg[getEndMemoria(registradorDestino)][0] = reg[getEndMemoria(registradorOrigem)][0];
 		reg[getEndMemoria(registradorDestino)][1] = reg[getEndMemoria(registradorOrigem)][1];
 	}
 
