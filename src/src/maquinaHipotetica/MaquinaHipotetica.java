@@ -226,7 +226,8 @@ public class MaquinaHipotetica
 				instrucao_3(ri[1], endereco);				
 			break;
 			
-			case "4": instrucao_4(ri[1], ri[2]);
+			case "4": 
+				instrucao_4(ri[1], ri[2]);
 			break;
 			
 			case "5":
@@ -245,7 +246,8 @@ public class MaquinaHipotetica
 			case "9": // Metodo que não foi criado
 			break;
 					
-			case "A": // Metodo que não foi criado
+			case "A": 
+				instrucao_A(ri[1], ri[3]);
 			break;
 			
 			case "B":
@@ -447,11 +449,45 @@ public class MaquinaHipotetica
 	}
 
 	/*
+	 * Método que implementa a instrução rotate.
+	 * ROTATE gira o padrão de bits de um registrador R, de X bits 
+	 * para a direita. Sempre coloca o bit que está na extremidade
+	 * de mais baixa ordem na de mais alta ordem.
+	 * Exemplo: A403 gira em 3 bits para a direita o conteúdo do
+	 * registrador 4, de forma circular.
 	 * 
+	 * @AUTHOR	Marco Sousa
 	 */
-	public void instrucao_A()
+	public static void instrucao_A(String registrador, String x)
 	{
+		int i;
+		int rotate = Integer.parseInt(x);
+		int iRegistrador = Integer.parseInt(registrador);
+		int iBinary = Integer.parseInt(reg[iRegistrador][0] + reg[iRegistrador][1]);
+		String sBinary = Integer.toBinaryString(iBinary);
 		
+		if(sBinary.length() < 8)
+		{
+			String complemento = "";
+			for(i = 0; i < 8 - sBinary.length(); i++)
+			{
+				complemento += "0";
+			}
+			sBinary = complemento + sBinary;
+		}
+		
+		for(i = 0; i < rotate; i++)
+		{
+			sBinary = sBinary.substring(7,8) + sBinary.substring(0, 7);
+		}
+		iBinary = 0;
+		for(i = 0; i < sBinary.length(); i++)
+		{
+			iBinary += Integer.parseInt(sBinary.substring(i, i+1)) * Math.pow(2, 7-i);
+		}
+		sBinary = Integer.toHexString(iBinary);
+		reg[iRegistrador][0] = sBinary.substring(0, 1);
+		reg[iRegistrador][1] = sBinary.substring(1, 2);
 	}
 
 	/* Método da instrução JUMP
