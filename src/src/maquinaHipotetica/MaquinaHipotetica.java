@@ -226,7 +226,7 @@ public class MaquinaHipotetica
 				instrucao_3(ri[1], endereco);				
 			break;
 			
-			case "4": // Metodo que não foi criado
+			case "4": instrucao_4(ri[1], ri[2]);
 			break;
 			
 			case "5":
@@ -316,7 +316,7 @@ public class MaquinaHipotetica
 	 * para o registradorDestino
 	 * @author	Matheus Fernandes e Sostenes Oliveira
 	 */
-	public void instrucao_4(String registradorOrigem, String registradorDestino)
+	public static void instrucao_4(String registradorOrigem, String registradorDestino)
 	{
 		reg[getEndMemoria(registradorDestino)][0] = reg[getEndMemoria(registradorDestino)][0];
 		reg[getEndMemoria(registradorDestino)][1] = reg[getEndMemoria(registradorDestino)][1];
