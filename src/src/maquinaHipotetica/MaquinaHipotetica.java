@@ -382,18 +382,23 @@ public class MaquinaHipotetica
 	 * @author Sostenes Oliveira
 	 */
 	public static void instrucao_7(String registrador1, String registrador2, String registradorFinal)
-	{	int reg1 = Integer.parseInt(registrador1);
-		Integer.toBinaryString(reg1);
-		
-		int reg2 = Integer.parseInt(registrador2);
-		Integer.toBinaryString(reg2);
-		
-		int regFinal = reg1 | reg2;
-		
-		String regFinal2 = Integer.toHexString(regFinal);
-		
-		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
-		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
+	{
+		int reg1 = Integer.parseInt(reg[getEndMemoria(registrador1)][0] + reg[getEndMemoria(registrador1)][1], 16);
+		int reg2 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1], 16);
+	
+		int regFinal1 = reg1 | reg2;
+		String regFinal2 = Integer.toHexString(regFinal1);
+
+		if(regFinal2.length() > 1)
+		{
+			reg[getEndMemoria(registradorFinal)][0] = regFinal2.substring(0, 1);
+			reg[getEndMemoria(registradorFinal)][1] = regFinal2.substring(1, 2);
+		}
+		else
+		{
+			reg[getEndMemoria(registradorFinal)][0] = "0";
+			reg[getEndMemoria(registradorFinal)][1] = regFinal2.substring(0, 1);
+		}	
 	}
 
 	/*
@@ -440,18 +445,22 @@ public class MaquinaHipotetica
 	 */
 	public static void instrucao_9(String registrador1, String registrador2, String registradorFinal)
 	{
-		int reg1 = Integer.parseInt(registrador1);
-		Integer.toBinaryString(reg1);
+		int reg1 = Integer.parseInt(reg[getEndMemoria(registrador1)][0] + reg[getEndMemoria(registrador1)][1], 16);
+		int reg2 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1], 16);
 	
-		int reg2 = Integer.parseInt(registrador2);
-		Integer.toBinaryString(reg2);
-	
-		int regFinal = reg1 ^ reg2;
-		String regFinal2 = Integer.toHexString(regFinal);
-	
-		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
-		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
-		
+		int regFinal1 = reg1 ^ reg2;
+		String regFinal2 = Integer.toHexString(regFinal1);
+
+		if(regFinal2.length() > 1)
+		{
+			reg[getEndMemoria(registradorFinal)][0] = regFinal2.substring(0, 1);
+			reg[getEndMemoria(registradorFinal)][1] = regFinal2.substring(1, 2);
+		}
+		else
+		{
+			reg[getEndMemoria(registradorFinal)][0] = "0";
+			reg[getEndMemoria(registradorFinal)][1] = regFinal2.substring(0, 1);
+		}	
 	}
 
 	/*
