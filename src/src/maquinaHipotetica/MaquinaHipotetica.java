@@ -1,5 +1,6 @@
 ﻿package maquinaHipotetica;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class MaquinaHipotetica 
@@ -23,6 +24,8 @@ public class MaquinaHipotetica
 	static int mp_pos = 0;
 
 	private static boolean parar = false;
+	
+	
 	
 	/*
 	 * Método para conversão de endereço de memória 
@@ -116,7 +119,53 @@ public class MaquinaHipotetica
 	 */
 	public static void carregaArquivo(String arquivo)
 	{
-		System.out.println(arquivo);
+		String linha = null;
+		
+		//Atributo do metodo carregaArquivo
+		 File vrArquivo = null;
+		
+		try
+		{
+			//Cria os objetos de arquivo
+			vrArquivo = new File(getClass().getResource(arquivo).toURI());
+			
+			Scanner vrLeitor = new Scanner(vrArquivo);
+			
+			while(vrLeitor.hasNext())
+			{
+				linha = vrLeitor.nextLine();
+				
+				if(linha.substring(0,1).equals("#"))
+				{
+					mp_pos = getEndMemoria(linha.substring(1,3));
+				}
+				else if(linha.substring(0,1).equals("@"))
+				{
+					pc[0] = String.valueOf(linha.substring(1,2));
+					pc[1] = String.valueOf(linha.substring(2,3));
+					System.out.print('@');
+					System.out.print(pc[0]);
+					System.out.println(pc[1]);
+					break;
+				}
+				else
+				{
+					mp[mp_pos][0] = linha.substring(0,1);
+					mp[mp_pos][1] = linha.substring(1,2);
+					mp_pos++;
+					mp[mp_pos][0] = linha.substring(2,3);
+					mp[mp_pos][1] = linha.substring(3,4);
+					mp_pos++;
+				}
+			}
+			vrLeitor.close();
+			
+		}
+		catch(Exception e)
+		{
+		
+		}
+		
 	}
 	
 	/*
