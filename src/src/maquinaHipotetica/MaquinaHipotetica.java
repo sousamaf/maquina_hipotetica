@@ -240,7 +240,8 @@ public class MaquinaHipotetica
 			case "7": // Metodo que não foi criado
 			break;
 			
-			case "8": // Metodo que não foi criado
+			case "8": 
+				instrucao_8(ri[1], ri[2], ri[3]);
 			break;	
 			
 			case "9": // Metodo que não foi criado
@@ -324,9 +325,11 @@ public class MaquinaHipotetica
 		reg[getEndMemoria(registradorDestino)][1] = reg[getEndMemoria(registradorOrigem)][1];
 	}
 
-	/* Metodo que realiza a soma do valor de dois registradores e salva a soma em um terceiro registrador.
-	 * @author Bruno Martinovski
+	/* 
+	 * Metodo que realiza a soma do valor de dois registradores e 
+	 * salva a soma em um terceiro registrador.
 	 * 
+	 * @author Bruno Martinovski
 	 */
 	public static void instrucao_5(String registrador1, String registrador2, String registrador3)
 	{ 
@@ -347,16 +350,9 @@ public class MaquinaHipotetica
 			reg[getEndMemoria(registrador1)][1] = sTotal.substring(0, 1);
 		}
 	}
-
-	/* Método da intrução "ADD" (soma).
-	 * Recebe como parametro os dois registradores que serão somados,
-	 * logo em seguida armazena o resultado da operação em um terceiro registrador, chamado
-	 * registradorFinal.
-	 * @author Matheus Fernandes 
-	 * @author Sostenes Oliveira
-	 */
 	
-	/* Método da intrução "ADD" (soma).
+	/* 
+	 * Método da intrução "ADD" (soma).
 	 * Recebe como parametro os dois registradores que serão somados,
 	 * logo em seguida armazena o resultado da operação em um terceiro registrador, chamado
 	 * registradorFinal.
@@ -376,7 +372,8 @@ public class MaquinaHipotetica
 		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2))); 	
 	}
 
-	/*Método da intrução "OR" (operação lógica "OU").
+	/*
+	 * Método da intrução "OR" (operação lógica "OU").
 	 * Recebe como parametro os dois registradores que serão comparados bit a bit,
 	 * logo em seguida armazena o resultado da comparação em um terceiro registrador, chamado
 	 * registradorFinal.
@@ -399,35 +396,44 @@ public class MaquinaHipotetica
 		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
 	}
 
-	/*Método da intrução "AND" (operação lógica "E").
+	/*
+	 * Método da intrução "AND" (operação lógica "E").
 	 * Recebe como parametro os dois registradores que serão comparados bit a bit,
 	 * logo em seguida armazena o resultado da comparação em um terceiro registrador, chamado
 	 * registradorFinal.
 	 * @author Matheus Fernandes 
 	 * @author Eryck Kaique
 	 * @author Sostenes Oliveira
+	 * 
+	 * Modificado por @AUTHOR Marco Sousa
 	 */
-	public static void instrucao_8(String registrador1, String registrador2, String registradorFinal)
+	public static void instrucao_8(String registrador1, String registrador2, String registrador3)
 	{
-		int reg1 = Integer.parseInt(registrador1);
-		Integer.toBinaryString(reg1);
+		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1], 16);
+		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0] + reg[getEndMemoria(registrador3)][1], 16);
 	
-		int reg2 = Integer.parseInt(registrador2);
-		Integer.toBinaryString(reg2);
-	
-		int regFinal = reg1 & reg2;
-		String regFinal2 = Integer.toHexString(regFinal);
-	
-		reg[getEndMemoria(registradorFinal)][0] = String.valueOf(getEndMemoria(regFinal2.substring(0,1))); 
-		reg[getEndMemoria(registradorFinal)][1] = String.valueOf(getEndMemoria(regFinal2.substring(1,2)));
-	
+		int valorFinal = valor1 & valor2;
+		String sValorFinal = Integer.toHexString(valorFinal);
+
+		if(sValorFinal.length() > 1)
+		{
+			reg[getEndMemoria(registrador1)][0] = sValorFinal.substring(0, 1);
+			reg[getEndMemoria(registrador1)][1] = sValorFinal.substring(1, 2);
+		}
+		else
+		{
+			reg[getEndMemoria(registrador1)][0] = "0";
+			reg[getEndMemoria(registrador1)][1] = sValorFinal.substring(0, 1);
+		}	
 	}
 	
 
-	/*Método da intrução "OR EXCLUSIVE" (operação lógica "OU EXCLUSIVO").
+	/*
+	 * Método da intrução "OR EXCLUSIVE" (operação lógica "OU EXCLUSIVO").
 	 * Recebe como parametro os dois registradores que serão comparados bit a bit,
 	 * logo em seguida armazena o resultado da comparação em um terceiro registrador, chamado
 	 * registradorFinal.
+	 * 
 	 * @author Matheus Fernandes 
 	 * @author Eryck Kaique
 	 * @author Sostenes Oliveira
@@ -555,7 +561,7 @@ public class MaquinaHipotetica
 	 */
 	public static void instrucao_E(String registrador)
 	{
-		System.out.print("R" + registrador + ": ");
+		System.out.print("\tR" + registrador + ": ");
 		System.out.print(reg[getEndMemoria(registrador)][0]);
 		System.out.println(reg[getEndMemoria(registrador)][1]);
 	}
@@ -567,7 +573,7 @@ public class MaquinaHipotetica
 	public static void main(String[] args)
 	{
 		promptInterativo();
-		mostraMemoria();
+		//mostraMemoria();
 		
 		while(true)
 		{
@@ -577,7 +583,7 @@ public class MaquinaHipotetica
 			if(parar  == true)
 				break;
 		}
-		mostraRegistrador();
-		mostraMemoria();
+		//mostraRegistrador();
+		//mostraMemoria();
 	}
 }
