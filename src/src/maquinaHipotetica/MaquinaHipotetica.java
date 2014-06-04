@@ -114,9 +114,9 @@ public class MaquinaHipotetica
 	 * @AUTHOR Ricardo Santiago
 	 * 
 	 */
-	public static void carregaArquivo()
+	public static void carregaArquivo(String arquivo)
 	{
-		
+		System.out.println(arquivo);
 	}
 	
 	/*
@@ -594,8 +594,12 @@ public class MaquinaHipotetica
 	 */
 	public static void main(String[] args)
 	{
-		promptInterativo();
-		//mostraMemoria();
+        if(args.length > 0)
+            carregaArquivo(args[0]);
+        else
+        		promptInterativo();
+
+        //mostraMemoria();
 		
 		while(true)
 		{
