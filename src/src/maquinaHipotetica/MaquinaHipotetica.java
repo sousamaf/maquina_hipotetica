@@ -107,6 +107,19 @@ public class MaquinaHipotetica
 	}
 	
 	/*
+	 * Método que carrega o arquivo contendo as instruções para execução.
+	 * 
+	 * @AUTHOR Alexandra Carvalho
+	 * @AUTHOR Bruno Martinovski
+	 * @AUTHOR Ricardo Santiago
+	 * 
+	 */
+	public static void carregaArquivo()
+	{
+		
+	}
+	
+	/*
 	 * Método para exibir o conteúdo presente na memória da máquina 
 	 * hipotética.
 	 * 
