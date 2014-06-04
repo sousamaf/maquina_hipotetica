@@ -117,10 +117,10 @@ public class MaquinaHipotetica
 	 * @AUTHOR Ricardo Santiago
 	 * 
 	 */
-	public static void carregaArquivo(String arquivo)
+	public void carregaArquivo(String arquivo)
 	{
 		String linha = null;
-		
+
 		//Atributo do metodo carregaArquivo
 		 File vrArquivo = null;
 		
@@ -163,7 +163,7 @@ public class MaquinaHipotetica
 		}
 		catch(Exception e)
 		{
-		
+			System.out.println(e);
 		}
 		
 	}
@@ -637,11 +637,8 @@ public class MaquinaHipotetica
 		System.out.println(reg[getEndMemoria(registrador)][1]);
 	}
 
-	
-	/*
-	 * Método principal do pragrama.
-	 */
-	public static void main(String[] args)
+
+	public MaquinaHipotetica(String[] args)
 	{
         if(args.length > 0)
             carregaArquivo(args[0]);
@@ -660,5 +657,13 @@ public class MaquinaHipotetica
 		}
 		//mostraRegistrador();
 		//mostraMemoria();
+
+	}
+	/*
+	 * Método principal do pragrama.
+	 */
+	public static void main(String[] args)
+	{
+		new MaquinaHipotetica(args);
 	}
 }
