@@ -296,17 +296,20 @@ public class MaquinaHipotetica
 				instrucao_5(ri[1], ri[2], ri[3]);
 			break;
 			
-			case "6": // Metodo que não foi criado
+			case "6":
+				instrucao_6(ri[1], ri[2], ri[3]);
 			break;
 			
-			case "7": // Metodo que não foi criado
+			case "7": 
+				instrucao_7(ri[1], ri[2], ri[3]);
 			break;
 			
 			case "8": 
 				instrucao_8(ri[1], ri[2], ri[3]);
 			break;	
 			
-			case "9": // Metodo que não foi criado
+			case "9": 
+				instrucao_9(ri[1], ri[2], ri[3]);
 			break;
 					
 			case "A": 
