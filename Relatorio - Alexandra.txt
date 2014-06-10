@@ -1,0 +1,79 @@
+Faculdade Católica do Tocantins
+Aluna: Alexandra Carvalho
+Professor: Marco Sousa
+Disciplina Arquitetura de Computadores II
+
+Testei as instruções da seguinte forma:
+#01
+1803
+28FF
+3807
+4087
+C000
+@01
+A instrução foi executada
+
+5º Instrução
+#01
+2A00
+2201
+57A2
+C000
+@01
+A Instrução foi executada
+
+6º Instrução
+#01
+2A01
+2200
+67A2
+C000
+@01
+A Instrução não foi executada
+
+7º Instrução
+#01
+2001
+2F00
+710F
+C000
+@01
+A Instrução não foi executada
+
+8º Instrução
+#01
+2201
+2F00
+812F
+C000
+@01
+A Instrução foi executada
+
+9º Instrução
+#01
+2701
+2100
+9B71
+C000
+@01
+A Instrução não foi executada
+
+A Instrução
+#01
+2703
+A703
+C000
+@01
+A Instrução foi executada
+
+B Instrução
+#01
+2700
+B705
+C000
+@01
+A Instrução não foi executada
+
+C000 cumpriu o seu papel de encerrar as instruções.
+
+
