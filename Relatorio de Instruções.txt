@@ -1,0 +1,22 @@
+﻿Ricardo Santiago Morais
+Sistema de Informação - Arquitetura II
+Professor: Marco Sousa
+
+Instruções testadas:
+
+Posição de Memoria:				Instrução:
+	#10				1053 = Mostrou-se executando;
+	#15				20AA = Mostrou-se executando;
+	#00				30AF = Mostrou-se executando;
+	#65				40A9 = Mostrou-se executando;
+	#20				5097 = Mostrou-se executando mas correu Bug;
+	#99				632F = Mostrou-se executando mas correu Bug;
+	#105				7ACD = Mostrou-se executando mas correu Bug;
+	#247				8069 = Mostrou-se executando mas correu Bug;
+	#01				96C8 = Não executou.
+	#77				A419 = Mostrou-se executando mas correu Bug;
+	#51				B0F4 = Mostrou-se executando mas correu Bug;
+	#81				C000 = Mostrou-se executando em todas as instruções;
+
+
+	
