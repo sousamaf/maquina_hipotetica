@@ -69,13 +69,13 @@ public class MaquinaHipotetica
 				break;
 			}
 			testa = entrada.next() ;
-			exibe += "\n>>> " + testa;
+			exibe += "\n>>> " + testa.toUpperCase();
 			// testa se a instrução é @
 			if(testa.toUpperCase().substring(0, 1).equals("@"))
 			{
 				pi_estado = 3;
-				pc[0] = String.valueOf(testa.substring(1,2));
-				pc[1] = String.valueOf(testa.substring(2,3));
+				pc[0] = String.valueOf(testa.substring(1,2).toUpperCase());
+				pc[1] = String.valueOf(testa.substring(2,3).toUpperCase());
 				System.out.print('@');
 				System.out.print(pc[0]);
 				System.out.println(pc[1]);
@@ -87,17 +87,17 @@ public class MaquinaHipotetica
 				pi_estado = 1;
 				
 				
-				mp_pos = getEndMemoria(testa.substring(1,3));
+				mp_pos = getEndMemoria(testa.substring(1,3).toUpperCase());
 				pi_estado = 0;
 				
 			}
 			else
 			{
-				mp[mp_pos][0] = testa.substring(0,1);
-				mp[mp_pos][1] = testa.substring(1,2);
+				mp[mp_pos][0] = testa.substring(0,1).toUpperCase();
+				mp[mp_pos][1] = testa.substring(1,2).toUpperCase();
 				mp_pos++;
-				mp[mp_pos][0] = testa.substring(2,3);
-				mp[mp_pos][1] = testa.substring(3,4);
+				mp[mp_pos][0] = testa.substring(2,3).toUpperCase();
+				mp[mp_pos][1] = testa.substring(3,4).toUpperCase();
 				mp_pos++;
 			}
 			
@@ -134,15 +134,16 @@ public class MaquinaHipotetica
 			while(vrLeitor.hasNext())
 			{
 				linha = vrLeitor.nextLine();
+				//linha = linha.toUpperCase();
 				
 				if(linha.substring(0,1).equals("#"))
 				{
-					mp_pos = getEndMemoria(linha.substring(1,3));
+					mp_pos = getEndMemoria(linha.substring(1,3).toUpperCase());
 				}
 				else if(linha.substring(0,1).equals("@"))
 				{
-					pc[0] = String.valueOf(linha.substring(1,2));
-					pc[1] = String.valueOf(linha.substring(2,3));
+					pc[0] = String.valueOf(linha.substring(1,2).toUpperCase());
+					pc[1] = String.valueOf(linha.substring(2,3).toUpperCase());
 					System.out.print('@');
 					System.out.print(pc[0]);
 					System.out.println(pc[1]);
@@ -150,11 +151,11 @@ public class MaquinaHipotetica
 				}
 				else
 				{
-					mp[mp_pos][0] = linha.substring(0,1);
-					mp[mp_pos][1] = linha.substring(1,2);
+					mp[mp_pos][0] = linha.substring(0,1).toUpperCase();
+					mp[mp_pos][1] = linha.substring(1,2).toUpperCase();
 					mp_pos++;
-					mp[mp_pos][0] = linha.substring(2,3);
-					mp[mp_pos][1] = linha.substring(3,4);
+					mp[mp_pos][0] = linha.substring(2,3).toUpperCase();
+					mp[mp_pos][1] = linha.substring(3,4).toUpperCase();
 					mp_pos++;
 				}
 			}
@@ -406,13 +407,13 @@ public class MaquinaHipotetica
 
 		if(sTotal.length() > 1)
 		{
-			reg[getEndMemoria(registrador1)][0] = sTotal.substring(0, 1);
-			reg[getEndMemoria(registrador1)][1] = sTotal.substring(1, 2);
+			reg[getEndMemoria(registrador1)][0] = sTotal.substring(0, 1).toUpperCase();
+			reg[getEndMemoria(registrador1)][1] = sTotal.substring(1, 2).toUpperCase();
 		}
 		else
 		{
 			reg[getEndMemoria(registrador1)][0] = "0";
-			reg[getEndMemoria(registrador1)][1] = sTotal.substring(0, 1);
+			reg[getEndMemoria(registrador1)][1] = sTotal.substring(0, 1).toUpperCase();
 		}
 	}
 	
@@ -543,8 +544,16 @@ public class MaquinaHipotetica
 		int i;
 		int rotate = Integer.parseInt(x);
 		int iRegistrador = Integer.parseInt(registrador);
+		
+		System.out.println(reg[iRegistrador][0] + reg[iRegistrador][1]);
+		System.out.println(rotate);
+
 		int iBinary = Integer.parseInt(reg[iRegistrador][0] + reg[iRegistrador][1]);
+		
+		System.out.println(Integer.toBinaryString(iBinary));
+		
 		String sBinary = Integer.toBinaryString(iBinary);
+		System.out.println("Bin:" + sBinary);
 		
 		if(sBinary.length() < 8)
 		{
@@ -580,8 +589,8 @@ public class MaquinaHipotetica
 	{		
 		if(reg[0][0].equals(reg[getEndMemoria(registrador)][0]) && reg[0][1].equals(reg[getEndMemoria(registrador)][1]))
 		{
-			pc[0] = String.valueOf(endereco.substring(0,1));
-			pc[1] = String.valueOf(endereco.substring(1,2));
+			pc[0] = String.valueOf(endereco.substring(0,1).toUpperCase());
+			pc[1] = String.valueOf(endereco.substring(1,2).toUpperCase());
 		}
 	}
 	
