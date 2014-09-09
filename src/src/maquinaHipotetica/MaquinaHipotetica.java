@@ -127,7 +127,8 @@ public class MaquinaHipotetica
 		try
 		{
 			//Cria os objetos de arquivo
-			vrArquivo = new File(getClass().getResource(arquivo).toURI());
+			//vrArquivo = new File(getClass().getResource(arquivo).toURI());
+			vrArquivo = new File(arquivo);
 			
 			Scanner vrLeitor = new Scanner(vrArquivo);
 			
@@ -647,7 +648,7 @@ public class MaquinaHipotetica
 	public MaquinaHipotetica(String[] args)
 	{
         if(args.length > 0)
-            carregaArquivo(args[0]);
+            carregaArquivo(args[0].toString());
         else
         		promptInterativo();
 
