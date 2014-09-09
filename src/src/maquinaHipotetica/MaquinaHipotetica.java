@@ -544,16 +544,10 @@ public class MaquinaHipotetica
 		int i;
 		int rotate = Integer.parseInt(x);
 		int iRegistrador = Integer.parseInt(registrador);
-		
-		System.out.println(reg[iRegistrador][0] + reg[iRegistrador][1]);
-		System.out.println(rotate);
 
-		int iBinary = Integer.parseInt(reg[iRegistrador][0] + reg[iRegistrador][1]);
-		
-		System.out.println(Integer.toBinaryString(iBinary));
+		int iBinary = Integer.parseInt(reg[iRegistrador][0] + reg[iRegistrador][1], 16);
 		
 		String sBinary = Integer.toBinaryString(iBinary);
-		System.out.println("Bin:" + sBinary);
 		
 		if(sBinary.length() < 8)
 		{
