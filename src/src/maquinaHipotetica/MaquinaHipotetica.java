@@ -386,7 +386,7 @@ public class MaquinaHipotetica
 	 * para o registradorDestino
 	 * @author	Matheus Fernandes e Sostenes Oliveira
 	 */
-	public static void instrucao_4(String registradorOrigem, String registradorDestino)
+	public static void instrucao_4(String registradorDestino, String registradorOrigem)
 	{
 		reg[getEndMemoria(registradorDestino)][0] = reg[getEndMemoria(registradorOrigem)][0];
 		reg[getEndMemoria(registradorDestino)][1] = reg[getEndMemoria(registradorOrigem)][1];
@@ -622,6 +622,7 @@ public class MaquinaHipotetica
 		String input = new String();
 		System.out.print("<<< ");
 		input = entrada.next();
+
 		
 		reg[getEndMemoria(registrador)][0] = input.substring(0, 1);
 		reg[getEndMemoria(registrador)][1] = input.substring(1, 2);

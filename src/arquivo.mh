@@ -1,6 +1,20 @@
-#00
-2022
-A003
+2000
+D001 ;leitura do primeiro valor para comparação.
+D002 ;leitura do segundo valor para comparação.
+2D80 ;mascara para bit mais significativo.
+2E01 ;mascara para bit menos significativo.
+B0F0
+#F0  ;bloco para identificar bit de sinal. 
+83D1 ;R3 tem o sinal do primeiro valor.
+84D2 ;R4 tem o sinal do segundo valor.
+E003
+E004
+4030 ;R3 em R0
 E000
+B4A0 ;Verifica se os sinal são iguais. Em caso positivo, vai para A0
+C000
+#A0  ;Tratamento de sinais iguais.
+E001
+E002
 C000
 @00
