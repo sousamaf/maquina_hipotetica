@@ -400,21 +400,86 @@ public class MaquinaHipotetica
 	 */
 	public static void instrucao_5(String registrador1, String registrador2, String registrador3)
 	{ 
+		int i = 0;
 		int valor1 = Integer.parseInt(reg[getEndMemoria(registrador2)][0] + reg[getEndMemoria(registrador2)][1], 16);
 		int valor2 = Integer.parseInt(reg[getEndMemoria(registrador3)][0] + reg[getEndMemoria(registrador3)][1], 16);
-		int total = valor1 + valor2;
+		
 
-		String sTotal = Integer.toHexString(total);
-
-		if(sTotal.length() > 1)
+		String sBinary1 = Integer.toBinaryString(valor1);
+		String sBinary2 = Integer.toBinaryString(valor2);
+		
+		if(sBinary1.length() < 8)
 		{
-			reg[getEndMemoria(registrador1)][0] = sTotal.substring(0, 1).toUpperCase();
-			reg[getEndMemoria(registrador1)][1] = sTotal.substring(1, 2).toUpperCase();
+			String complemento = "";
+			for(i = 0; i < 8 - sBinary1.length(); i++)
+			{
+				complemento += "0";
+			}
+			sBinary1 = complemento + sBinary1;
 		}
-		else
+		
+		if(sBinary2.length() < 8)
 		{
-			reg[getEndMemoria(registrador1)][0] = "0";
-			reg[getEndMemoria(registrador1)][1] = sTotal.substring(0, 1).toUpperCase();
+			String complemento = "";
+			for(i = 0; i < 8 - sBinary2.length(); i++)
+			{
+				complemento += "0";
+			}
+			sBinary2 = complemento + sBinary2;
+		}
+
+		if(sBinary1.substring(0,1).equals("0" ) && sBinary2.substring(0,1).equals("0" ))
+		{
+			int total = valor1 + valor2;
+			String sTotal = Integer.toHexString(total);
+	
+			if(sTotal.length() > 1)
+			{
+				reg[getEndMemoria(registrador1)][0] = sTotal.substring(0, 1).toUpperCase();
+				reg[getEndMemoria(registrador1)][1] = sTotal.substring(1, 2).toUpperCase();
+			}
+			else
+			{
+				reg[getEndMemoria(registrador1)][0] = "0";
+				reg[getEndMemoria(registrador1)][1] = sTotal.substring(0, 1).toUpperCase();
+			}
+		} else
+		{// Inversao logica do sinal.
+
+			if(sBinary1.substring(0,1).equals("1"))
+			{
+
+				for(i = 0; i < sBinary1.length(); i++)
+				{
+					if(sBinary1.substring(i, i+1).equals("1"))
+						sBinary1 = sBinary1.substring(0,i) + "0" + sBinary1.substring(i+1);
+					else
+						sBinary1 = sBinary1.substring(0,i) + "1" + sBinary1.substring(i+1);
+						
+				}
+
+				int iBinary1 = 0;
+				for(i = 0; i < sBinary1.length(); i++)
+				{
+					iBinary1 += Integer.parseInt(sBinary1.substring(i, i+1)) * Math.pow(2, 7-i);
+				}
+				sBinary1 = Integer.toHexString(iBinary1);				
+
+			}
+			if(sBinary2.substring(0,1).equals("1"))
+			{
+
+				for(i = 0; i < sBinary2.length(); i++)
+				{
+
+					if(sBinary2.substring(i, i+1).equals("1"))
+						sBinary2 = sBinary2.substring(0,i) + "0" + sBinary2.substring(i+1);
+					else
+						sBinary2 = sBinary2.substring(0,i) + "1" + sBinary2.substring(i+1);
+						
+				}		
+
+			}			
 		}
 	}
 	
