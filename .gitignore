@@ -12,8 +12,6 @@ src/bin/maquinaHipotetica/MaquinaHipotetica.class
 *.class
 >>>>>>> FETCH_HEAD
 
-src/src/maquinaHipotetica/MaquinaHipotetica.java
-
 src/bin/maquinaHipotetica/MaquinaHipotetica.class
 
 src/bin/arquivo.mh
