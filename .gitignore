@@ -1,3 +1,19 @@
 .class
 *.class
+<<<<<<< HEAD
 src/bin/maquinaHipotetica/MaquinaHipotetica.class
+=======
+.metadata
+.classpath
+.project
+.gitignore
+*.af
+*.txt
+*.class
+>>>>>>> FETCH_HEAD
+
+src/src/maquinaHipotetica/MaquinaHipotetica.java
+
+src/bin/maquinaHipotetica/MaquinaHipotetica.class
+
+src/bin/arquivo.mh
