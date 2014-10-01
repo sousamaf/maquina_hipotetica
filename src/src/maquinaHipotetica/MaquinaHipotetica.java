@@ -291,7 +291,7 @@ public class MaquinaHipotetica
 			break;
 			
 			case "4": 
-				instrucao_4(ri[1], ri[2]);
+				instrucao_4(ri[2], ri[3]);
 			break;
 			
 			case "5":
@@ -386,7 +386,7 @@ public class MaquinaHipotetica
 	 * para o registradorDestino
 	 * @author	Matheus Fernandes e Sostenes Oliveira
 	 */
-	public static void instrucao_4(String registradorDestino, String registradorOrigem)
+	public static void instrucao_4(String registradorOrigem, String registradorDestino)
 	{
 		reg[getEndMemoria(registradorDestino)][0] = reg[getEndMemoria(registradorOrigem)][0];
 		reg[getEndMemoria(registradorDestino)][1] = reg[getEndMemoria(registradorOrigem)][1];
@@ -624,9 +624,9 @@ public class MaquinaHipotetica
 		int iRegistrador = Integer.parseInt(registrador);
 
 		int iBinary = Integer.parseInt(reg[iRegistrador][0] + reg[iRegistrador][1], 16);
-		
+
 		String sBinary = Integer.toBinaryString(iBinary);
-		
+	
 		if(sBinary.length() < 8)
 		{
 			String complemento = "";
@@ -641,14 +641,25 @@ public class MaquinaHipotetica
 		{
 			sBinary = sBinary.substring(7,8) + sBinary.substring(0, 7);
 		}
+
 		iBinary = 0;
 		for(i = 0; i < sBinary.length(); i++)
 		{
 			iBinary += Integer.parseInt(sBinary.substring(i, i+1)) * Math.pow(2, 7-i);
 		}
-		sBinary = Integer.toHexString(iBinary);
-		reg[iRegistrador][0] = sBinary.substring(0, 1);
-		reg[iRegistrador][1] = sBinary.substring(1, 2);
+
+		sBinary = Integer.toHexString(iBinary).toUpperCase();
+
+		if(sBinary.length() > 1)
+		{
+			reg[iRegistrador][0] = sBinary.substring(0, 1);
+			reg[iRegistrador][1] = sBinary.substring(1, 2);
+		}
+		else
+		{
+			reg[iRegistrador][0] = "0";
+			reg[iRegistrador][1] = sBinary.substring(0, 1);
+		}
 	}
 
 	/* Método da instrução JUMP

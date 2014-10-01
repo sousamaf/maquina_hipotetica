@@ -1,6 +1,57 @@
-2003
-21FF
-5301
-E003
+2000
+D001 ;leitura do primeiro valor para comparação.
+D002 ;leitura do segundo valor para comparação.
+2D80 ;mascara para bit mais significativo.
+2E01 ;mascara para bit menos significativo.
+2606 ;contador
+B0F0
+#F0  ;bloco para identificar bit de sinal. 
+83D1 ;R3 tem o sinal do primeiro valor.
+84D2 ;R4 tem o sinal do segundo valor.
+4030 ;R3 em R0
+B4A0 ;Verifica se os sinais são iguais. Em caso positivo, vai para A0
+BDD4
+B0D0
+#A0  ;Tratamento de sinais iguais.
+40D0
+B4A8 ;Verifica se número é positivo ou negativo. R5 receberá o sinal.
+2500
+B0AA
+2501 
+2007 ; End. AA.
+B6D8
+E006
+36B9 ; End. B0.
+36BB
+4017 ;Copia entrada R1 para R7.
+4028 ;Copia entrada R2 para R8.
+A706 ;Rotaciona o R7.
+A806 ;Rotaciona os R8.
+87E7 ;AND para limpar bits.
+88E8 ;AND para limpar bits.
+4070 ; End. C0.
+B8C6
+B030
+566E
+B0AC
+#30
+2001
+B538
+B040
+#38  ;Tratamento do maior para sinal negativo.
+B7D4
+B0D0
+#40
+B7D0
+B0D4
+#D0  ;Primeiro maior.
+E001
+C000
+#D4  ;Segundo maior.
+E002
+C000
+#D8  ;São iguais.
+E001
+E002
 C000
 @00
